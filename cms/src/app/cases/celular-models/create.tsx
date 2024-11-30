@@ -3,14 +3,14 @@ import { ICelularModel } from "../../../@libs/types";
 import CelularModelForm from "./form";
 
 function CelularModelCreatePage() {
-  const [celular, setCelularModel] = useState<ICelularModel>({
+  const [celularModel, setCelularModel] = useState<ICelularModel>({
     name: "",
     factory: {},
   } as ICelularModel);
 
   return (
     <CelularModelForm
-      celular={celular}
+      celularModel={celularModel}
       setCelularModel={setCelularModel}
       showForm={true}
     />

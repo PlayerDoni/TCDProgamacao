@@ -13,8 +13,13 @@ function CelularLayout() {
 
   return (
     <Stack className="page-container">
-      <BreadCrumb title="Cadastro de Celulares" />
-      <Box display="flex" width="100%" justifyContent="end" marginBottom="1rem">
+      <BreadCrumb title="Cadastro de Fabricantes" />
+      <Box
+        display="flex"
+        width="100% "
+        justifyContent="end"
+        marginBottom="1rem"
+      >
         <Button variant="contained" onClick={handleCreate}>
           <AddIcon />
           Adicionar

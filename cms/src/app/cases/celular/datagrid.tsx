@@ -19,7 +19,7 @@ const columns: GridColDef[] = [
   },
   {
     field: "type",
-    headerName: "Tipo do Celular",
+    headerName: "Tipo Celular",
     resizable: false,
     width: 160,
     renderCell: (params: GridRenderCellParams) => <>{params.row.type.name}</>,
@@ -42,7 +42,7 @@ const columns: GridColDef[] = [
   },
   {
     field: "price",
-    headerName: "Preço Diário",
+    headerName: "Preço do Produto",
     resizable: false,
     width: 120,
     renderCell: (params: GridRenderCellParams) => (
@@ -72,12 +72,12 @@ const columns: GridColDef[] = [
 function CelularDataGrid() {
   const location = useLocation();
 
-  const [celulars, setCelulars] = useState<ICelular[]>([]);
+  const [celulars, setCelulares] = useState<ICelular[]>([]);
 
   useEffect(() => {
     CelularService.getAll()
       .then((result) => {
-        setCelulars(result.data);
+        setCelulares(result.data);
       })
       .catch((error) => toast.error(String(error)));
   }, [location]);

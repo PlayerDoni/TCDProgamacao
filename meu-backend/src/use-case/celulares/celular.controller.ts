@@ -10,13 +10,20 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { CelularService } from './celular.service';
 import { Celular } from './celular.entity';
+import { SupabaseService } from 'src/@libs/supabase/supabase.service';
 
 @Controller('/celulares')
 export class CelularController {
-  constructor(private service: CelularService) {}
+  constructor(
+    private readonly service: CelularService,
+    private readonly supabaseService: SupabaseService,
+  ) {}
 
   @Get()
   findAll(): Promise<Celular[]> {
@@ -62,5 +69,24 @@ export class CelularController {
       throw new HttpException('Celular not found', HttpStatus.NOT_FOUND);
 
     return this.service.remove(id);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async upload(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new HttpException('File not found', HttpStatus.BAD_REQUEST);
+    }
+
+    const result = await this.supabaseService.upload(file);
+
+    if (!result) {
+      throw new HttpException(
+        'Unable to upload file',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+
+    return result;
   }
 }

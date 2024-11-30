@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import CelularForm from "./form";
 import { ICelular } from "../../../@libs/types";
-import { useParams } from "react-router-dom"
-import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 import { CelularService } from "../../../services/celular.service";
+import { toast } from "react-toastify";
 
 function CelularEditPage() {
   const params = useParams();

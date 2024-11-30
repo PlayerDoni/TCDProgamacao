@@ -86,7 +86,7 @@ function CelularModelForm({
         <Select
           value={celularModel.factory?.id || ""}
           onChange={handleChange}
-          label="Fabricante"
+          label="Montadora"
         >
           {factories.map((factory) => (
             <MenuItem key={factory.id} value={factory.id}>

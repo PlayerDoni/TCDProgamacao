@@ -8,6 +8,12 @@ import CelularTypeCreatePage from "./app/cases/celular-types/create";
 import CelularFactoryLayout from "./app/cases/celular-factories/layout";
 import CelularFactoryCreatePage from "./app/cases/celular-factories/create";
 import CelularFactoryEditPage from "./app/cases/celular-factories/edit";
+import CelularModelLayout from "./app/cases/celular-models/layout";
+import CelularModelCreatePage from "./app/cases/celular-models/create";
+import CelularModelEditPage from "./app/cases/celular-models/edit";
+import CelularCreatePage from "./app/cases/celular/create";
+import CelularEditPage from "./app/cases/celular/edit";
+import CelularLayout from "./app/cases/celular/layout";
 
 function App() {
   return (
@@ -23,6 +29,14 @@ function App() {
           <Route path="/celular-factories" element={<CelularFactoryLayout />}>
             <Route path="new" element={<CelularFactoryCreatePage />} />
             <Route path=":id" element={<CelularFactoryEditPage />} />
+          </Route>
+          <Route path="/celular-models" element={<CelularModelLayout />}>
+            <Route path="new" element={<CelularModelCreatePage />} />
+            <Route path=":id" element={<CelularModelEditPage />} />
+          </Route>
+          <Route path="/celulares" element={<CelularLayout />}>
+            <Route path="new" element={<CelularCreatePage />} />
+            <Route path=":id" element={<CelularEditPage />} />
           </Route>
         </Routes>
       </main>
